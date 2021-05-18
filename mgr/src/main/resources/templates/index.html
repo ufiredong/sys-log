@@ -2,7 +2,7 @@
 <html class="x-admin-sm" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
-        <title>SNMP_WEB主机可视化分析平台</title>
+        <title>WINDOWS安全日志分析平台</title>
         <meta name="renderer" content="webkit|ie-comp|ie-stand">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -31,7 +31,7 @@
         <!-- 顶部开始 -->
         <div class="container">
             <div class="logo">
-                <a>snmp_web</a></div>
+                <a>SYS_LOG</a></div>
             <div class="left_open">
                 <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
             </div>
@@ -63,32 +63,10 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('CPU信息','page/cpu.html')">
+                                <a onclick="xadmin.add_tab('系统日志','page/log.html')">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>CPU信息</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('内存信息','page/memory.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>内存信息</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('TCP监测','page/tcp.html',true)">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>TCP监测</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('UDP监测','page/udp.html',true)">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>UDP监测</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('主机网卡IP信息','page/ip.html',true)">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>主机网卡IP信息</cite></a>
-                            </li>
-
-
+                                    <cite>系统日志</cite></a>
+                            </li>‘
                         </ul>
                     </li>
                 </ul>

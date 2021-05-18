@@ -76,6 +76,7 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <table schema="" tableName="log" domainObjectName="SysLog"></table>
+        <table schema="" tableName="log_task" domainObjectName="SysLogTaskInfo"></table>
 
     </context>
 </generatorConfiguration>

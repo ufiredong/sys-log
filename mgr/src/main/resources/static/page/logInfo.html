@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.2</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="/css/font.css">
+    <link rel="stylesheet" href="/css/xadmin.css">
+    <script src="/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/xadmin.js"></script>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body ">
+                    <form class="layui-form layui-col-space5">
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                            <legend>日志详情</legend>
+                        </fieldset>
+                    </form>
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="100">
+                            <col width="100">
+                            <col width="100">
+                            <col width="200">
+                            <col width="100">
+                        </colgroup>
+                        <tr>
+                            <th>记录ID</th>
+                            <th id="record"></th>
+                            <th>日志发生时间</th>
+                            <th id="evtDatetime"></th>
+                            <th>来源</th>
+                            <th id="source"></th>
+                        </tr>
+                        <tbody>
+                        <tr>
+                            <td>计算机</td>
+                            <td id="computer"></td>
+                            <td>CAT</td>
+                            <td id="cat"></td>
+                            <th>类型</th>
+                            <th id="evtType"></th>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="500">
+                        </colgroup>
+                        <tr>
+                            <th>日志描述</th>
+                        </tr>
+                        <tbody>
+                        <tr>
+                            <td id="msg"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+    $(document).ready(function(){
+
+
+        var id =  window.location.search.substring(1);
+        $.get("/log/logInfo?"+id,function(data,status){
+            document.getElementById("record").innerText=data.data.record
+            document.getElementById("cat").innerText=data.data.cat
+            document.getElementById("computer").innerText=data.data.computer
+            document.getElementById("msg").innerText=data.data.msg
+            document.getElementById("evtDatetime").innerText=data.data.evtDatetime
+            document.getElementById("source").innerText=data.data.source
+            document.getElementById("evtType").innerText=data.data.evtType
+        });
+    });
+
+
+
+
+
+
+
+</script>
+<script>var _hmt = _hmt || []; (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();</script>
+</html>

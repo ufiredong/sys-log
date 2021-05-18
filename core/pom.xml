@@ -16,7 +16,7 @@
     <properties>
         <java.version>1.8</java.version>
         <mybatis.generator.overwrite>true</mybatis.generator.overwrite>
-        <mybatis.generator.tableNames>log</mybatis.generator.tableNames>
+        <mybatis.generator.tableNames>log_task</mybatis.generator.tableNames>
     </properties>
 
     <dependencies>
