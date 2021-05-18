@@ -1,0 +1,19 @@
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://8.136.110.11:3306/snmp_web?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone = GMT
+    username: root
+    password: 123456
+    initial-size: 20
+    max-active: 40
+    min-idle: 20
+snmp:
+  hostIp: 8.136.110.11
+  port: 161
+  community: public
+  version: 2
+server:
+  port: 9090

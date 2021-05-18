@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <meta charset="UTF-8">
+        <title>欢迎页面-X-admin2.2</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <link rel="stylesheet" href="/css/font.css">
+        <link rel="stylesheet" href="/css/xadmin.css">
+        <script src="/lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/js/xadmin.js"></script>
+        <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+        <!--[if lt IE 9]>
+          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+          <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body ">
+                            <blockquote class="layui-elem-quote">欢迎管理员：
+                                <span class="x-red">wyh</span>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">数据统计</div>
+                        <div class="layui-card-body ">
+                            <ul class="layui-row layui-col-space10 layui-this x-admin-carousel x-admin-backlog">
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>IP接收数据报文</h3>
+                                        <p>
+                                            <cite id="ipInReceives">0</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>IP发送数据报文</h3>
+                                        <p>
+                                            <cite id="ipOutRequests">0</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>TCP发送数据报文</h3>
+                                        <p>
+                                            <cite id="tcpInSegs">0</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>TCP接收数据报文</h3>
+                                        <p>
+                                            <cite id="tcpOutSegs">0</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>UDP接收数据报文</h3>
+                                        <p>
+                                            <cite id="udpInDatagrams">0</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6 ">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>UDP发送数据报文</h3>
+                                        <p>
+                                            <cite id="udpOutDatagrams">0</cite></p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div class="layui-card">
+                        <div class="layui-card-header">CPU利用率
+                            <span class="layui-badge layui-bg-cyan layuiadmin-badge">%</span></div>
+                        <div class="layui-card-body  ">
+                            <p class="layuiadmin-big-font" id="cpuRate">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div class="layui-card">
+                        <div class="layui-card-header">内存利用率
+                            <span class="layui-badge layui-bg-cyan layuiadmin-badge">%</span></div>
+                        <div class="layui-card-body ">
+                            <p class="layuiadmin-big-font" id="memoryRate">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div class="layui-card">
+                        <div class="layui-card-header">TCP连接
+                            <span class="layui-badge layui-bg-cyan layuiadmin-badge">个</span></div>
+                        <div class="layui-card-body ">
+                            <p class="layuiadmin-big-font" id="tcpCons">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div class="layui-card">
+                        <div class="layui-card-header">UDP连接
+                            <span class="layui-badge layui-bg-cyan layuiadmin-badge">个</span></div>
+                        <div class="layui-card-body ">
+                            <p class="layuiadmin-big-font" id="udpCons">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">系统信息</div>
+                        <div class="layui-card-body ">
+                            <table class="layui-table">
+                                <tbody>
+                                <tr>
+                                    <th>系统基本信息</th>
+                                    <td id="sysDesc"></td></tr>
+                                <tr>
+                                    <th>监控时间</th>
+                                    <td id="sysUptime"></td></tr>
+                                <tr>
+                                    <th>系统联系人</th>
+                                    <td id="sysContact"></td></tr>
+                                <tr>
+                                    <th>机器名</th>
+                                    <td id="sysName"></td></tr>
+                                <tr>
+                                    <th>机器坐在位置</th>
+                                    <td id="sysLocation"></td></tr>
+                                <tr>
+                                    <th>用户CPU百分比</th>
+                                    <td id="ssCpuUser"></td></tr>
+                                <tr>
+                                    <th>系统CPU百分比</th>
+                                    <td id="ssCpuSystem"></td></tr>
+                                <tr>
+                                    <th>空闲CPU百分比</th>
+                                    <td id="ssCpuIdle"></td></tr>
+                                <tr>
+                                    <th>内存大小</th>
+                                    <td id="hrMemorySize"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">版本信息</div>
+                        <div class="layui-card-body ">
+                            <table class="layui-table">
+                                <tbody>
+                                    <tr>
+                                        <th>版权所有</th>
+                                        <td>wyh
+
+                                    </tr>
+                                    <tr>
+                                        <th>开发者</th>
+                                        <td>wyh(xxxxx@qq.com)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <style id="welcome_style"></style>
+                <div class="layui-col-md12">
+                    <blockquote class="layui-elem-quote layui-quote-nm">基于springboot,websocket,layui,html,jquery,echarts,snmp4j开发 </blockquote></div>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
+<script>
+
+    var websocket = null;
+
+    //判断当前浏览器是否支持WebSocket, 主要此处要更换为自己的地址
+    if ('WebSocket' in window) {
+        websocket = new WebSocket("ws://127.0.0.1:9090/socket/sysInfo");
+    } else {
+        alert('Not support websocket')
+    }
+
+    //连接发生错误的回调方法
+    websocket.onerror = function() {
+
+    };
+
+    //连接成功建立的回调方法
+    websocket.onopen = function(event) {
+
+    }
+
+    //接收到消息的回调方法
+    websocket.onmessage = function(event) {
+        var indexinfo=JSON.parse(event.data)
+        console.info(indexinfo)
+        var sysInfo=indexinfo.sysInfo;
+        var cpuInfo=indexinfo.cpuInfo;
+        var memoryInfo=indexinfo.memoryInfo
+        var cacheInfo=indexinfo.cacheInfo
+        document.getElementById('sysDesc').innerText=sysInfo.sysDesc
+        document.getElementById('sysUptime').innerText=sysInfo.sysUptime
+        document.getElementById('sysContact').innerText=sysInfo.sysContact
+        document.getElementById('sysName').innerText=sysInfo.sysName
+        document.getElementById('sysLocation').innerText=sysInfo.sysLocation
+        document.getElementById('ssCpuUser').innerText=cpuInfo.ssCpuUser
+        document.getElementById('ssCpuSystem').innerText=cpuInfo.ssCpuSystem
+        document.getElementById('ssCpuIdle').innerText=cpuInfo.ssCpuIdle
+        document.getElementById('hrMemorySize').innerText=memoryInfo.hrMemorySize
+
+        document.getElementById("udpOutDatagrams").innerText=cacheInfo.udpInfo.udpOutDatagrams;
+        document.getElementById("udpInDatagrams").innerText=cacheInfo.udpInfo.udpInDatagrams;
+        document.getElementById("ipInReceives").innerText=cacheInfo.ipInfo.ipInReceives;
+        document.getElementById("ipOutRequests").innerText=cacheInfo.ipInfo.ipOutRequests;
+        document.getElementById("tcpInSegs").innerText=cacheInfo.tcpInfo.tcpInSegs;
+        document.getElementById("tcpOutSegs").innerText=cacheInfo.tcpInfo.tcpOutSegs;
+
+        document.getElementById("cpuRate").innerText=cacheInfo.cpuInfo.rate;
+        document.getElementById("memoryRate").innerText=cacheInfo.memoryInfo.rate;
+        document.getElementById("tcpCons").innerText=cacheInfo.tcpInfo.tcpConnTable.length;
+        document.getElementById("udpCons").innerText=cacheInfo.udpInfo.udptable.length;
+
+
+
+    }
+
+    //连接关闭的回调方法
+    websocket.onclose = function() {
+
+    }
+
+    //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+    window.onbeforeunload = function() {
+        websocket.close();
+    }
+
+    //将消息显示在网页上
+    function setMessageInnerHTML(innerHTML) {
+
+
+    }
+
+    //关闭连接
+    function closeWebSocket() {
+        websocket.close();
+    }
+
+    //发送消息
+    function send() {
+    }
+
+
+</script>
