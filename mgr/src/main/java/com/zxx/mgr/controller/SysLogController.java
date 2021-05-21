@@ -1,9 +1,9 @@
 package com.zxx.mgr.controller;
 
-import com.zxx.core.model.RestModel;
-import com.zxx.core.model.SysLog;
-import com.zxx.core.model.SysLogExample;
+import com.zxx.core.model.*;
+import com.zxx.core.service.LogCountService;
 import com.zxx.core.service.SysLogService;
+import com.zxx.mgr.vo.SysLogVo;
 import mboog.support.bean.Page;
 import org.junit.platform.commons.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,10 @@ public class SysLogController {
     @Autowired
     private SysLogService sysLogService;
 
+    @Autowired
+
+    private LogCountService logCountService;
+
     // 日志列表查询
     @RequestMapping(value = "/list")
     @ResponseBody
@@ -48,6 +54,7 @@ public class SysLogController {
 
         SysLogExample sysLogExample = new SysLogExample();
         SysLogExample.Criteria criteria = sysLogExample.ignoreNull().or();
+
         criteria
                 .andCatLike("%{}%", cat)
                 .andRecordEqualTo(record)
@@ -55,16 +62,18 @@ public class SysLogController {
                 .andComputerLike("%{}%", computer)
                 .andSourceLike("%{}%", source)
                 .andEvtIdEqualTo(evtId);
+
         if (!StringUtils.isBlank(start) && !StringUtils.isBlank(end)) {
-            criteria.andEvtDatetimeBetween(
-                    LocalDate.parse(start, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay(),
-                    LocalDate.parse(end, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay())
-            ;
+            LocalDateTime startDate = LocalDate.parse(start, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
+            LocalDateTime endDate = LocalDate.parse(end, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
+            Timestamp timestamp = Timestamp.valueOf(startDate);
+
+            criteria.andEvtDatetimeBetween(Timestamp.valueOf(startDate).getTime(),Timestamp.valueOf(endDate).getTime());
         }
         Page<SysLog> sysLogPage = sysLogService.selectPageByExample(sysLogExample, pageNum, pageSize);
-
-        return new RestModel(sysLogPage.getTotal(), sysLogPage.getData());
-
+        List<SysLog> data = sysLogPage.getData();
+        List<SysLogVo> sysLogs = data.stream().map(SysLogVo::toSysLogVo).collect(Collectors.toList());
+        return new RestModel(sysLogPage.getTotal(), sysLogs);
     }
 
 
@@ -94,20 +103,20 @@ public class SysLogController {
     @ResponseBody
     public RestModel indexInfo(
     ) {
+        LogCount logCount = logCountService.selectByExample(new LogCountExample()).get(0);
 
-        List<SysLog> sysLogs = sysLogService.selectByExample(new SysLogExample());
-        List list = new ArrayList();
-        Map<Integer, Long> recordCount = sysLogs.stream().collect(Collectors.groupingBy(SysLog::getRecord, Collectors.counting()));
-        Map<String, Long> computerCount = sysLogs.stream().collect(Collectors.groupingBy(SysLog::getComputer, Collectors.counting()));
-        Map<String, Long> evtIdCount = sysLogs.stream().collect(Collectors.groupingBy(SysLog::getEvtId, Collectors.counting()));
-        Map<String, Long> sourceCount = sysLogs.stream().collect(Collectors.groupingBy(SysLog::getSource, Collectors.counting()));
-        list.add(recordCount);
-        list.add(computerCount);
-        list.add(evtIdCount);
-        list.add(sourceCount);
-        return new RestModel(null, list);
+//        List<SysLog> sysLogs = sysLogService.selectByExample(new SysLogExample());
 
+//        List list = new ArrayList();
+//        Map<Integer, Long> recordCount = sysLogs.stream().collect(Collectors.groupingBy(SysLog::getRecord, Collectors.counting()));
+//        Map<String, Long> computerCount = sysLogs.stream().collect(Collectors.groupingBy(SysLog::getComputer, Collectors.counting()));
+//        Map<String, Long> evtIdCount = sysLogs.stream().collect(Collectors.groupingBy(SysLog::getEvtId, Collectors.counting()));
+//        Map<String, Long> sourceCount = sysLogs.stream().collect(Collectors.groupingBy(SysLog::getSource, Collectors.counting()));
+//        list.add(recordCount);
+//        list.add(computerCount);
+//        list.add(evtIdCount);
+//        list.add(sourceCount);
+      return new RestModel(null, logCount);
     }
-
 
 }

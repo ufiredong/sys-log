@@ -29,7 +29,7 @@
                     <div class="layui-card">
                         <div class="layui-card-body ">
                             <blockquote class="layui-elem-quote">欢迎管理员：
-                                <span class="x-red">test</span>
+                                <span class="x-red">zxx</span>
                             </blockquote>
                         </div>
                     </div>
@@ -44,27 +44,6 @@
                                         <h3>日志记录总数</h3>
                                         <p>
                                             <cite id="logCount"></cite></p>
-                                    </a>
-                                </li>
-                                <li class="layui-col-md2 layui-col-xs6">
-                                    <a href="javascript:;" class="x-admin-backlog-body">
-                                        <h3>事件ID数量</h3>
-                                        <p>
-                                            <cite id="evtIdCount"></cite></p>
-                                    </a>
-                                </li>
-                                <li class="layui-col-md2 layui-col-xs6">
-                                    <a href="javascript:;" class="x-admin-backlog-body">
-                                        <h3>来源数量</h3>
-                                        <p>
-                                            <cite id="sourceCount"></cite></p>
-                                    </a>
-                                </li>
-                                <li class="layui-col-md2 layui-col-xs6">
-                                    <a href="javascript:;" class="x-admin-backlog-body">
-                                        <h3>计算机数量</h3>
-                                        <p>
-                                            <cite id="computerCount"></cite></p>
                                     </a>
                                 </li>
                             </ul>
@@ -117,13 +96,9 @@
 </html>
 <script>
     $(document).ready(function(){
-        $.get("/index/acInfo",function(data,status){
-            document.getElementById("userCount").innerText=data.data.userCount
-            document.getElementById("recordCount").innerText=data.data.recordCount
-            document.getElementById("apCount").innerText=data.data.apCount
-            document.getElementById("total").innerText=data.data.total
-            document.getElementById("send").innerText=data.data.send
-            document.getElementById("rec").innerText=data.data.rec
+        $.get("/log/indexInfo",function(data,status){
+
+            document.getElementById("logCount").innerText=data.data.logcount
 
         });
     });

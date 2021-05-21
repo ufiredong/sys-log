@@ -48,62 +48,52 @@ public class SysLogTaskInfoExample extends AbstractExample<SysLogTaskInfoExample
             return (Criteria) this;
         }
 
-        public Criteria andEvtDatetimeEqualTo(String value) {
+        public Criteria andEvtDatetimeEqualTo(Long value) {
             addCriterion("evt_datetime =", value, "evtDatetime");
             return (Criteria) this;
         }
 
-        public Criteria andEvtDatetimeNotEqualTo(String value) {
+        public Criteria andEvtDatetimeNotEqualTo(Long value) {
             addCriterion("evt_datetime <>", value, "evtDatetime");
             return (Criteria) this;
         }
 
-        public Criteria andEvtDatetimeGreaterThan(String value) {
+        public Criteria andEvtDatetimeGreaterThan(Long value) {
             addCriterion("evt_datetime >", value, "evtDatetime");
             return (Criteria) this;
         }
 
-        public Criteria andEvtDatetimeGreaterThanOrEqualTo(String value) {
+        public Criteria andEvtDatetimeGreaterThanOrEqualTo(Long value) {
             addCriterion("evt_datetime >=", value, "evtDatetime");
             return (Criteria) this;
         }
 
-        public Criteria andEvtDatetimeLessThan(String value) {
+        public Criteria andEvtDatetimeLessThan(Long value) {
             addCriterion("evt_datetime <", value, "evtDatetime");
             return (Criteria) this;
         }
 
-        public Criteria andEvtDatetimeLessThanOrEqualTo(String value) {
+        public Criteria andEvtDatetimeLessThanOrEqualTo(Long value) {
             addCriterion("evt_datetime <=", value, "evtDatetime");
             return (Criteria) this;
         }
 
-        public Criteria andEvtDatetimeLike(String pattern, String value) {
-            addCriterionPattern("evt_datetime like", pattern, value, "evtDatetime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEvtDatetimeNotLike(String pattern, String value) {
-            addCriterionPattern("evt_datetime not like", pattern, value, "evtDatetime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEvtDatetimeIn(List<String> values) {
+        public Criteria andEvtDatetimeIn(List<Long> values) {
             addCriterion("evt_datetime in", values, "evtDatetime");
             return (Criteria) this;
         }
 
-        public Criteria andEvtDatetimeNotIn(List<String> values) {
+        public Criteria andEvtDatetimeNotIn(List<Long> values) {
             addCriterion("evt_datetime not in", values, "evtDatetime");
             return (Criteria) this;
         }
 
-        public Criteria andEvtDatetimeBetween(String value1, String value2) {
+        public Criteria andEvtDatetimeBetween(Long value1, Long value2) {
             addCriterion("evt_datetime between", value1, value2, "evtDatetime");
             return (Criteria) this;
         }
 
-        public Criteria andEvtDatetimeNotBetween(String value1, String value2) {
+        public Criteria andEvtDatetimeNotBetween(Long value1, Long value2) {
             addCriterion("evt_datetime not between", value1, value2, "evtDatetime");
             return (Criteria) this;
         }
@@ -518,6 +508,66 @@ public class SysLogTaskInfoExample extends AbstractExample<SysLogTaskInfoExample
             return (Criteria) this;
         }
 
+        public Criteria andSecondsIsNull() {
+            addCriterion("`seconds` is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondsIsNotNull() {
+            addCriterion("`seconds` is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondsEqualTo(Long value) {
+            addCriterion("`seconds` =", value, "seconds");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondsNotEqualTo(Long value) {
+            addCriterion("`seconds` <>", value, "seconds");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondsGreaterThan(Long value) {
+            addCriterion("`seconds` >", value, "seconds");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondsGreaterThanOrEqualTo(Long value) {
+            addCriterion("`seconds` >=", value, "seconds");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondsLessThan(Long value) {
+            addCriterion("`seconds` <", value, "seconds");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondsLessThanOrEqualTo(Long value) {
+            addCriterion("`seconds` <=", value, "seconds");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondsIn(List<Long> values) {
+            addCriterion("`seconds` in", values, "seconds");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondsNotIn(List<Long> values) {
+            addCriterion("`seconds` not in", values, "seconds");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondsBetween(Long value1, Long value2) {
+            addCriterion("`seconds` between", value1, value2, "seconds");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondsNotBetween(Long value1, Long value2) {
+            addCriterion("`seconds` not between", value1, value2, "seconds");
+            return (Criteria) this;
+        }
+
         public Criteria andMsgIsNull() {
             addCriterion("msg is null");
             return (Criteria) this;
@@ -604,13 +654,14 @@ public class SysLogTaskInfoExample extends AbstractExample<SysLogTaskInfoExample
         //--------------------------------------------------
 		//[TABLE]
 		//--------------------------------------------------					
-						EVT_DATETIME(2, Types.VARCHAR, false, "evt_datetime"),					
+						EVT_DATETIME(2, Types.BIGINT, false, "evt_datetime"),					
 						EVT_TYPE(2, Types.VARCHAR, false, "evt_type"),					
 						RECORD(2, Types.INTEGER, false, "record"),					
 						SOURCE(2, Types.VARCHAR, true, "source"),					
 						EVT_ID(2, Types.VARCHAR, false, "evt_id"),					
 						COMPUTER(2, Types.VARCHAR, false, "computer"),					
 						CAT(2, Types.VARCHAR, false, "cat"),					
+						SECONDS(2, Types.BIGINT, true, "seconds"),					
 						MSG(3, Types.LONGVARCHAR, false, "msg");
 
         C(int types, int jdbcType, boolean delimited, String columnName) {
